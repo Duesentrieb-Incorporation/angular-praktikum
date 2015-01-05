@@ -1,0 +1,8 @@
+# ignore modules installed by the node package manager (npm)
+/node_modules
+
+# bower components
+# /app/bower_components
+
+# ignore WebStorm configuration files
+/.idea

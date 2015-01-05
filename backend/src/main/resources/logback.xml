@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- Fallback logback.xml. Set the parameter -Dlogback.configurationFile=...
+        to override this configuration. -->
+
+    <!-- Console Appender -->
+    <appender name="CL" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%-5level] %d [%t] [%c{35}] - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="CL" />
+    </root>
+
+    <!-- fh.de Loggers -->
+    <logger name="fh.muenster.web20" level="DEBUG" />
+
+</configuration>

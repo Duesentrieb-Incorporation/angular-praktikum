@@ -1,0 +1,76 @@
+<!doctype html>
+
+<!-- Nutze demoApp für die Anwendung -->
+<html land=en ng-app="demoApp">
+    <head>
+        <meta charset="utf-8">
+        <title>AngularJS Praktikum Web 2.0</title>
+
+        <!-- needed by bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+
+        <!-- components -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+    </head>
+
+    <body>
+        <!-- Menüleiste -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ng-href="#/home">Home</a>
+                </div>
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a ng-href="#/articles"><span class="glyphicon glyphicon-book"/> Artikel</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-href="#/admin/articles"><span class="glyphicon glyphicon-cog"/> Einstellungen</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Benachrichtigungsbereich -->
+        <div class="container">
+            <div class="row">
+                <div ng-controller="MainController as ctrl">
+                    <div ng-if="ctrl.notifications.length > 0" ng-repeat="item in ctrl.notifications">
+                        <div class="alert alert-{{ item.type }} alert-dismissible">
+                            <button ng-click="ctrl.remove(item)" type="button" class="close"><span >&times;</span></button>
+                            <strong>{{ item.title }}</strong> {{ item.message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Bereich zum anzeigen der Unterseiten passend zum Routing -->
+                <div ng-view/>
+            </div>
+        </div>
+
+        <!-- Anwendung-->
+        <script src="app.js"></script>
+
+        <!-- Home -->
+        <script src="home/home.js"></script>
+        <script src="home/home-controller.js"></script>
+
+        <!-- Artikel -->
+        <script src="articles/articles.js"></script>
+        <script src="articles/articles-controller.js"></script>
+
+        <!-- Einstellungen -->
+        <script src="admin/admin.js"></script>
+        <script src="admin/admin-controller.js"></script>
+
+        <!-- Services -->
+        <script src="services/article-service.js"></script>
+        <script src="services/article-service-mock.js"></script>
+        <script src="services/notification-service.js"></script>
+    </body>
+</html>

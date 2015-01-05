@@ -1,0 +1,46 @@
+<div class="container" style="padding: 0px">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Artikelverwaltung <span style="float:right;" class="badge badge-inverse">{{ ctrl.articles.length }}</span></h3>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th> <th>Title</th> <th>Content</th> <th></th> <th></th> <th></th>
+                    </tr>
+                    <tr ng-repeat="item in ctrl.articles">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.content | limitTo:40 }}&hellip;</td>
+                        <td>
+                            <a class="btn btn-default" ng-href="#/articles/{{ item.id }}">
+                                <span class="glyphicon glyphicon-search"/>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-info" ng-href="#/admin/articles/edit/{{ item.id }}">
+                                <span class="glyphicon glyphicon-pencil"/>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" ng-click="ctrl.remove(item)">
+                                <span class="glyphicon glyphicon-trash"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Optionen</h3>
+                </div>
+                <div class="panel-body">
+                    <span style="float:right;"><a class="btn btn-success" ng-href="#/admin/articles/create">Neuen Artikel erstellen</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
